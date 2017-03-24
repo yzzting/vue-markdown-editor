@@ -1,0 +1,33 @@
+.toolbar-color {
+  background-color: #CA3E6B!important;
+}
+
+.button-color {
+  background-color: #1FAB89!important;
+}
+
+.button-add {
+  left: 40%;
+}
+
+.md-list {
+  padding: 0!important;
+  color: #fff!important;
+  background-color: #1FAB89!important; 
+}
+
+.md-menu-content.md-select-content.md-theme-default.md-size-0.md-direction-bottom-right.md-active {
+  left: 584px!important;
+}
+
+.sidenav-main {
+  .font-color {
+    color: #fff!important;
+  }
+  .font-underline {
+    &:after {
+      background-color: transparent!important;
+    }
+  }
+}
+
