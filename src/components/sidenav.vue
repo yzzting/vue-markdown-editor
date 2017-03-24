@@ -61,7 +61,7 @@
                 </md-input-container>
             </md-button>
     
-            <md-button class="md-icon-button md-raised button-color button-add" md-elevation="9" @click.nativ="articleAdd">
+            <md-button class="md-icon-button md-raised button-color button-add" md-elevation="9" @click.native="articleAdd">
                 <md-icon>note_add</md-icon>
                 <md-tooltip md-direction="bottom">添加文章</md-tooltip>
             </md-button>
