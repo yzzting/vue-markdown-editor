@@ -60,11 +60,12 @@
                     </md-select>
                 </md-input-container>
             </md-button>
-    
-            <md-button class="md-icon-button md-raised button-color button-add" md-elevation="9" @click.native="articleAdd">
-                <md-icon>note_add</md-icon>
-                <md-tooltip md-direction="bottom">添加文章</md-tooltip>
-            </md-button>
+            <md-layout md-flex md-flex-medium="33" md-hide-small class="button-add-offset">
+                <md-button class="md-icon-button md-raised button-color button-add" md-elevation="9" @click.native="articleAdd">
+                    <md-icon>note_add</md-icon>
+                    <md-tooltip md-direction="bottom">添加文章</md-tooltip>
+                </md-button>
+            </md-layout>
         </md-toolbar>
     
         <md-sidenav class="md-left" ref="leftSidenav" id="closepage">

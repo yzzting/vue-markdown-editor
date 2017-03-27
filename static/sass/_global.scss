@@ -16,11 +16,25 @@ body {
 // //   color: #95E1D3;
 // }
 
-// ::-webkit-scrollbar-thumb {
-//     background: #FFCFDF;
-//     -webkit-border-radius: 0;
-//     -moz-border-radius: 0;
-//     -o-border-radius: 0;
-//     -ms-border-radius: 0;
-//     border-radius: 0;
-// }
+::-webkit-scrollbar {
+    width: 8px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #FFCFDF;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -o-border-radius: 0;
+    -ms-border-radius: 0;
+    border-radius: 0;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(211,211,211,0.18);
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -o-border-radius: 0;
+    -ms-border-radius: 0;
+    border-radius: 0;
+}
