@@ -1,6 +1,6 @@
 <template>
   <div class="input-main">
-    <textarea id="inputer" @click="updatedFont" @input="inputting" :value="rawTxt" autofocus :style="{fontFamily: this.$store.getters.articleFont}"></textarea>
+    <textarea id="inputer" @click="updatedFont" @input="inputting" :value="rawTxt" autofocus :style="{fontFamily: updatedFont}"></textarea>
   </div>
 </template>
 
@@ -17,20 +17,15 @@ export default {
     inputting(e) {
       this.$store.dispatch('textInput',e.target.value)
       this.$store.dispatch('saveCatch')
-    },
-    updatedFont() {
-      return this.$store.getters.articleFont
-    }
-  },
-  watch: {
-    font: () => {
-      this.font =  this.$store.getters.articleFont
     }
   },
   computed:{
     rawTxt() {
        return this.$store.getters.articleRaw
     },
+    updatedFont() {
+      return this.$store.getters.articleFont
+    }
   }
 }
 </script>
