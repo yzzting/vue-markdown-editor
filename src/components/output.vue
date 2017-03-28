@@ -1,5 +1,5 @@
 <template>
-    <div class="output-main" v-html="ripeTxt">
+    <div class="output-main markdown-body" v-html="ripeTxt" id="output">
 
     </div>
 </template>

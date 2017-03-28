@@ -1,6 +1,6 @@
 <template>
   <div class="input-main">
-    <textarea id="inputer" @click="updatedFont" @input="inputting" :value="rawTxt" autofocus :style="{fontFamily: updatedFont}"></textarea>
+    <textarea id="inputer" @click="updatedFont" @input="inputting" @scroll="synvScroll" :value="rawTxt" autofocus :style="{fontFamily: updatedFont}"></textarea>
   </div>
 </template>
 
@@ -17,6 +17,10 @@ export default {
     inputting(e) {
       this.$store.dispatch('textInput',e.target.value)
       this.$store.dispatch('saveCatch')
+    },
+    synvScroll(e) {
+      let outputer = document.getElementById('output')
+      outputer.scrollTop = e.target.scrollTop
     }
   },
   computed:{

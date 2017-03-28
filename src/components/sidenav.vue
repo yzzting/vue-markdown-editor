@@ -60,6 +60,7 @@
                     </md-select>
                 </md-input-container>
             </md-button>
+
             <md-layout md-flex md-flex-medium="33" md-hide-small class="button-add-offset">
                 <md-button class="md-icon-button md-raised button-color button-add" md-elevation="9" @click.native="articleAdd">
                     <md-icon>note_add</md-icon>
