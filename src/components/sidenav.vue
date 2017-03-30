@@ -40,6 +40,12 @@
                 <md-icon>title</md-icon>
                 <md-tooltip md-direction="bottom">标题</md-tooltip>
             </md-button>
+            
+            <md-button class="md-icon-button md-raised button-color" md-elevation="9" @click.native='fullPage'>
+                <md-icon>aspect_ratio</md-icon>
+                <md-tooltip md-direction="bottom">全屏</md-tooltip>
+            </md-button>
+    
             <md-button class="md-icon-button md-raised button-color font-color" @click.native='buttonFunction("\n- [ ] ")'>
                 <md-icon>check circle</md-icon>
                 <md-tooltip md-direction="bottom">复选框</md-tooltip>
@@ -60,7 +66,7 @@
                     </md-select>
                 </md-input-container>
             </md-button>
-
+    
             <md-layout md-flex md-flex-medium="33" md-hide-small class="button-add-offset">
                 <md-button class="md-icon-button md-raised button-color button-add" md-elevation="9" @click.native="articleAdd">
                     <md-icon>note_add</md-icon>
@@ -103,6 +109,8 @@
         return newContent
     }
     
+    const screenfull = require('screenfull')
+
     import yzzMenu from './menu'
     
     export default {
@@ -183,6 +191,13 @@
             },
             articleAdd() {
                 this.$store.dispatch('newArticle')
+            },
+            fullPage() {
+                if (screenfull.request()) {
+                    screenfull.request()
+                } else {
+               screenfull.exit()
+                }
             }
         }
     }
