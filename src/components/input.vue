@@ -1,12 +1,12 @@
 <template>
   <div class="input-main">
-    <yzz-toolbar></yzz-toolbar>
+    <yzz-inputtoolbar></yzz-inputtoolbar>
     <textarea id="inputer" @click="updatedFont" @input="inputting" @scroll="synvScroll" :value="rawTxt" autofocus :style="{fontFamily: updatedFont}"></textarea>
   </div>
 </template>
 
 <script>
-  import yzzToolbar from './toolbar'
+  import yzzInputtoolbar from './input-toolbar'
   
   export default {
     name: 'input',
@@ -16,7 +16,7 @@
       }
     },
     components: {
-      yzzToolbar
+      yzzInputtoolbar
     },
     methods: {
       inputting(e) {

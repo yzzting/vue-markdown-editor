@@ -1,7 +1,12 @@
 .editor-box {
   box-sizing: border-box;
-  height: 93%;
+  height: 100%;
   padding: 10px;
+  padding-bottom: 70px;
   display: flex;
   justify-content: space-between;
+}
+
+.show {
+  padding-bottom: 10px;
 }

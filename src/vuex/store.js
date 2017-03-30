@@ -46,7 +46,7 @@ const saveID = (state) => {
 
 const mutations = {
   SHOW_MENU(state) {
-    state.showMenu = !state.showMenu
+    state.showMenu = state.showMenu === false ? true : false
   },
   UPDATE_FONT(state, font) {
     state.font = font

@@ -1,5 +1,5 @@
 <template>
-    <div class="sidenav-main">
+    <div class="sidenav-main" v-show="showMenu">
         <md-toolbar class="toolbar-color">
             <md-button class="md-icon-button md-raised button-color" md-elevation="9" @click.native="toggleLeftSidenav">
                 <md-icon>menu</md-icon>
@@ -41,10 +41,7 @@
                 <md-tooltip md-direction="bottom">标题</md-tooltip>
             </md-button>
     
-            <md-button class="md-icon-button md-raised button-color" md-elevation="9" @click.native='fullPage'>
-                <md-icon>aspect_ratio</md-icon>
-                <md-tooltip md-direction="bottom">全屏</md-tooltip>
-            </md-button>
+           
     
             <md-button class="md-icon-button md-raised button-color font-color" @click.native='buttonFunction("\n- [ ] ")'>
                 <md-icon>check circle</md-icon>
@@ -108,9 +105,7 @@
         inputer.setSelectionRange(len, len)
         return newContent
     }
-    
-    const screenfull = require('screenfull')
-    
+        
     import yzzMenu from './menu'
 
     export default {
@@ -192,12 +187,10 @@
             articleAdd() {
                 this.$store.dispatch('newArticle')
             },
-            fullPage() {
-                if (screenfull.request()) {
-                    screenfull.request()
-                } else {
-                    screenfull.exit()
-                }
+        },
+        computed:{
+            showMenu() {
+                return this.$store.state.showMenu
             }
         }
     }
