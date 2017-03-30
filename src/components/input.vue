@@ -1,37 +1,42 @@
 <template>
   <div class="input-main">
+    <yzz-toolbar></yzz-toolbar>
     <textarea id="inputer" @click="updatedFont" @input="inputting" @scroll="synvScroll" :value="rawTxt" autofocus :style="{fontFamily: updatedFont}"></textarea>
   </div>
 </template>
 
 <script>
-
-export default {
-  name: 'input',
-  data() {
-    return {
-      font: ''
-    }
-  },
-  methods: {
-    inputting(e) {
-      this.$store.dispatch('textInput',e.target.value)
-      this.$store.dispatch('saveCatch')
+  import yzzToolbar from './toolbar'
+  
+  export default {
+    name: 'input',
+    data() {
+      return {
+        font: ''
+      }
     },
-    synvScroll(e) {
-      let outputer = document.getElementById('output')
-      outputer.scrollTop = e.target.scrollTop
-    }
-  },
-  computed:{
-    rawTxt() {
-       return this.$store.getters.articleRaw
+    components: {
+      yzzToolbar
     },
-    updatedFont() {
-      return this.$store.getters.articleFont
+    methods: {
+      inputting(e) {
+        this.$store.dispatch('textInput', e.target.value)
+        this.$store.dispatch('saveCatch')
+      },
+      synvScroll(e) {
+        let outputer = document.getElementById('output')
+        outputer.scrollTop = e.target.scrollTop
+      }
+    },
+    computed: {
+      rawTxt() {
+        return this.$store.getters.articleRaw
+      },
+      updatedFont() {
+        return this.$store.getters.articleFont
+      }
     }
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

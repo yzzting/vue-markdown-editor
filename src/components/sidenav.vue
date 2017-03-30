@@ -40,7 +40,7 @@
                 <md-icon>title</md-icon>
                 <md-tooltip md-direction="bottom">标题</md-tooltip>
             </md-button>
-            
+    
             <md-button class="md-icon-button md-raised button-color" md-elevation="9" @click.native='fullPage'>
                 <md-icon>aspect_ratio</md-icon>
                 <md-tooltip md-direction="bottom">全屏</md-tooltip>
@@ -110,9 +110,9 @@
     }
     
     const screenfull = require('screenfull')
-
-    import yzzMenu from './menu'
     
+    import yzzMenu from './menu'
+
     export default {
         name: 'sidenav',
         data() {
@@ -121,7 +121,7 @@
             }
         },
         components: {
-            yzzMenu
+            yzzMenu,
         },
         methods: {
             selectFont() {
@@ -196,7 +196,7 @@
                 if (screenfull.request()) {
                     screenfull.request()
                 } else {
-               screenfull.exit()
+                    screenfull.exit()
                 }
             }
         }
