@@ -1,5 +1,5 @@
 <template>
-    <div class="output-main">
+    <div class="output-main" :class="{outputThemeBlack:changeTheme}">
         <yzz-outputtoolbar></yzz-outputtoolbar>
         <div class="markdown-body" v-html="ripeTxt" id="output">
         </div>
@@ -17,6 +17,9 @@
         computed: {
             ripeTxt() {
                 return this.$store.getters.articleMd
+            },
+            changeTheme() {
+                return !this.$store.state.theme
             }
         }
     }

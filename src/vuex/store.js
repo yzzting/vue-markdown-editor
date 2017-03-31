@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import * as actions from './action'
-// import * as getters from './getter'
 
 const highlight = require('highlight.js')
 const marked = require('marked')
@@ -32,7 +30,8 @@ const state = {
     content: 'Untitled\n---\n',
     current: true
   }],
-  font: ''
+  font: '',
+  theme: true
 }
 
 const saveID = (state) => {
@@ -47,6 +46,9 @@ const saveID = (state) => {
 const mutations = {
   SHOW_MENU(state) {
     state.showMenu = state.showMenu === false ? true : false
+  },
+  CHANGE_THEME(state) {
+    state.theme = state.theme === false ? true : false
   },
   UPDATE_FONT(state, font) {
     state.font = font
@@ -88,7 +90,6 @@ const mutations = {
     for (let i = 0, len = state.articleList.length; i < len; i++) {
       if (state.articleList[i].current) {
         state.articleList[i].content = txt
-        // console.log(state.articleList[i].content)
       }
     }
   },
@@ -144,6 +145,11 @@ const actions = {
     commit
   }) {
     commit('SHOW_MENU')
+  },
+  changeTheme({
+    commit
+  }) {
+    commit('CHANGE_THEME')
   },
   updateFont({
     commit

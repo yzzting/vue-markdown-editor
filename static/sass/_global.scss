@@ -1,3 +1,4 @@
+$theme-background-color: rgb(68, 68, 68)!default;
 * {
   margin: 0;
   padding: 0;
@@ -12,29 +13,43 @@ body {
   background-color: #E84A5F!important;
 }
 
-// .md-title {
-// //   color: #95E1D3;
-// }
+.inputThemeBlack {
+  background-color: $theme-background-color;
+  color: rgb(214, 219, 223)!important;
+}
+
+.outputThemeBlack {
+  background-color: $theme-background-color;
+  * {
+    color: rgb(214, 219, 223)!important;
+  }
+}
+
+.fontWhile {
+  * {
+    color: rgb(214, 219, 223)!important;
+  }
+}
 
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 4px;
+  width: 8px;
+  height: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #E84A5F;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    -o-border-radius: 0;
-    -ms-border-radius: 0;
-    border-radius: 0;
+  background: #E84A5F;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -o-border-radius: 0;
+  -ms-border-radius: 0;
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(211,211,211,0.18);
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    -o-border-radius: 0;
-    -ms-border-radius: 0;
-    border-radius: 0;
+  background: rgba(211, 211, 211, 0.18);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -o-border-radius: 0;
+  -ms-border-radius: 0;
+  border-radius: 0;
 }

@@ -17,7 +17,7 @@
                 </md-button>
             </li>
             <li class="toolbar-item">
-                <md-button class="md-icon-button md-raised md-dense">
+                <md-button class="md-icon-button md-raised md-dense" @click.native="changeTheme">
                     <md-icon>cached</md-icon>
                 </md-button>
             </li>
@@ -53,6 +53,9 @@
                         this.pageButton = 'fullscreen'
                     }
                 }
+            },
+            changeTheme() {
+                this.$store.dispatch('changeTheme')
             }
         }
     }

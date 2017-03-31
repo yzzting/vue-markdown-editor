@@ -1,7 +1,7 @@
 <template>
   <div class="input-main">
-    <yzz-inputtoolbar></yzz-inputtoolbar>
-    <textarea id="inputer" @click="updatedFont" @input="inputting" @scroll="synvScroll" :value="rawTxt" autofocus :style="{fontFamily: updatedFont}"></textarea>
+    <yzz-inputtoolbar :class="{fontWhile:changeTheme}"></yzz-inputtoolbar>
+    <textarea id="inputer" @click.native="updatedFont" @input="inputting" @scroll="syncScroll" :value="rawTxt" :style="{fontFamily: updatedFont}" :class="{inputThemeBlack:changeTheme}"></textarea>
   </div>
 </template>
 
@@ -10,11 +10,6 @@
   
   export default {
     name: 'input',
-    data() {
-      return {
-        font: ''
-      }
-    },
     components: {
       yzzInputtoolbar
     },
@@ -23,7 +18,7 @@
         this.$store.dispatch('textInput', e.target.value)
         this.$store.dispatch('saveCatch')
       },
-      synvScroll(e) {
+      syncScroll(e) {
         let outputer = document.getElementById('output')
         outputer.scrollTop = e.target.scrollTop
       }
@@ -34,6 +29,9 @@
       },
       updatedFont() {
         return this.$store.getters.articleFont
+      },
+      changeTheme() {
+        return !this.$store.state.theme
       }
     }
   }
