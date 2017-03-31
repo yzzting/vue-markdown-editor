@@ -31,7 +31,9 @@ const state = {
     current: true
   }],
   font: '',
-  theme: true
+  theme: true,
+  themeIuputFloat: 'left',
+  themeOutputFloat: 'right'
 }
 
 const saveID = (state) => {
@@ -49,6 +51,11 @@ const mutations = {
   },
   CHANGE_THEME(state) {
     state.theme = state.theme === false ? true : false
+  },
+  CHANGE_THEMEFLOAT(state) {
+    state.themeIuputFloat = state.themeIuputFloat === 'left' ? 'right' : 'left'
+    state.themeOutputFloat = state.themeOutputFloat === 'right' ? 'left' : 'right'
+    console.log(state.themeIuputFloat + state.themeOutputFloat)
   },
   UPDATE_FONT(state, font) {
     state.font = font
@@ -150,6 +157,11 @@ const actions = {
     commit
   }) {
     commit('CHANGE_THEME')
+  },
+  changeThemeFloat({
+    commit
+  }) {
+    commit('CHANGE_THEMEFLOAT')
   },
   updateFont({
     commit

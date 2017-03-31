@@ -1,5 +1,5 @@
 <template>
-    <div class="output-main" :class="{outputThemeBlack:changeTheme}">
+    <div class="output-main" :class="{outputThemeBlack:changeTheme}" :style="{float:themeOutputFloat}">
         <yzz-outputtoolbar></yzz-outputtoolbar>
         <div class="markdown-body" v-html="ripeTxt" id="output">
         </div>
@@ -20,6 +20,9 @@
             },
             changeTheme() {
                 return !this.$store.state.theme
+            },
+            themeOutputFloat() {
+                return this.$store.state.themeOutputFloat
             }
         }
     }

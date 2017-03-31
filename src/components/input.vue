@@ -1,5 +1,5 @@
 <template>
-  <div class="input-main">
+  <div class="input-main" :style="{float:themeIuputFloat}">
     <yzz-inputtoolbar :class="{fontWhile:changeTheme}"></yzz-inputtoolbar>
     <textarea id="inputer" @click.native="updatedFont" @input="inputting" @scroll="syncScroll" :value="rawTxt" :style="{fontFamily: updatedFont}" :class="{inputThemeBlack:changeTheme}"></textarea>
   </div>
@@ -32,6 +32,9 @@
       },
       changeTheme() {
         return !this.$store.state.theme
+      },
+      themeIuputFloat() {
+        return this.$store.state.themeIuputFloat
       }
     }
   }
