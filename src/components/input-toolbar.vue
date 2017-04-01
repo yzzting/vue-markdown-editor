@@ -14,7 +14,7 @@
                 </md-button>
             </li>
             <li class="toolbar-item">
-                <md-button class="md-icon-button md-raised md-dense">
+                <md-button class="md-icon-button md-raised md-dense" @click.native="changeEditView('view')">
                     <md-icon>desktop_mac</md-icon>
                     <md-tooltip md-direction="bottom">编辑模式</md-tooltip>
                 </md-button>
@@ -35,6 +35,11 @@
         methods: {
             showSidenav() {
                 this.$store.dispatch('showMenu')
+            },
+            changeEditView(change) {
+                console.log('123')
+                this.$store.dispatch('changeThemeFloat', 'view')
+    
             }
         }
     }
