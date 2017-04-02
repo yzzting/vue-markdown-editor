@@ -2,8 +2,8 @@
   <div id="app">
     <sidenav />
     <div class="editor-box" :class="{show:showMenu}">
-      <inputer />
-      <outputer />
+      <inputer v-if="themeEditView"/>
+      <outputer v-if="themeReadView"/>
     </div>
   </div>
 </template>
@@ -21,6 +21,12 @@
     computed: {
       showMenu() {
         return !this.$store.state.showMenu
+      },
+      themeEditView() {
+        return this.$store.state.themeEditView
+      },
+      themeReadView() {
+        return this.$store.state.themeReadView
       }
     },
     components: {

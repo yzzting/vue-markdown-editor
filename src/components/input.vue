@@ -37,7 +37,7 @@
         return this.$store.state.themeIuputFloat
       },
       themeIuputMargin() {
-        return this.$store.state.themeIuputMargin
+        return this.$store.state.themeMargin
       }
     }
   }

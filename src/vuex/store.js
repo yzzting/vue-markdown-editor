@@ -34,7 +34,9 @@ const state = {
   theme: true,
   themeIuputFloat: 'left',
   themeOutputFloat: 'right',
-  themeIuputMargin: ''
+  themeMargin: '',
+  themeEditView: true,
+  themeReadView: true
 }
 
 const saveID = (state) => {
@@ -57,14 +59,16 @@ const mutations = {
     if (pos === 'change') {
       state.themeIuputFloat = state.themeIuputFloat === 'left' ? 'right' : 'left'
       state.themeOutputFloat = state.themeOutputFloat === 'right' ? 'left' : 'right'
-    } else {
-      state.themeIuputFloat = state.themeIuputFloat === 'none' ? 'left' : 'none'
-      state.themeIuputMargin = state.themeIuputMargin === '0 auto' ? '' : '0 auto'
+    } else if (pos === 'edit-view') {
+      state.themeIuputFloat = state.themeIuputFloat === 'left' ? 'none' : 'left'
+      state.themeMargin = state.themeMargin === '0 auto' ? '' : '0 auto'
+      state.themeReadView = state.themeReadView === false ? true : false
+    } else if (pos === 'read-view') {
+      state.themeOutputFloat = state.themeOutputFloat === 'right' ? 'none' : 'right'
+      state.themeMargin = state.themeMargin === '0 auto' ? '' : '0 auto'
+      state.themeEditView = state.themeEditView === false ? true : false
     }
     console.log(state.themeIuputFloat + state.themeOutputFloat)
-  },
-  CHANGE_VIEW(state){
-
   },
   UPDATE_FONT(state, font) {
     state.font = font
@@ -169,7 +173,7 @@ const actions = {
   },
   changeThemeFloat({
     commit
-  },pos) {
+  }, pos) {
     commit('CHANGE_THEMEFLOAT', pos)
   },
   updateFont({

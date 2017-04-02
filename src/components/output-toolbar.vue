@@ -14,7 +14,7 @@
                 </md-button>
             </li>
             <li class="toolbar-item">
-                <md-button class="md-icon-button md-raised md-dense">
+                <md-button class="md-icon-button md-raised md-dense" @click.native="changeEditView('read-view')"> 
                     <md-icon>desktop_mac</md-icon>
                     <md-tooltip md-direction="bottom">阅读模式</md-tooltip>
                 </md-button>
@@ -59,8 +59,11 @@
                 this.$store.dispatch('changeTheme')
             },
             changeThemeFloat(change) {
-                this.$store.dispatch('changeThemeFloat','change')
+                this.$store.dispatch('changeThemeFloat', 'change')
                 this.changeButton = this.changeButton === 'keyboard_arrow_left' ? 'keyboard_arrow_right' : 'keyboard_arrow_left'
+            },
+            changeEditView(change) {
+                this.$store.dispatch('changeThemeFloat', 'read-view')
             }
         }
     }
