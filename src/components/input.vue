@@ -1,22 +1,24 @@
 <template>
   <div class="input-main" :style="{float:themeIuputFloat,margin:themeIuputMargin}">
     <yzz-inputtoolbar :class="{fontWhile:changeTheme}"></yzz-inputtoolbar>
-    <textarea id="inputer" @click.native="updatedFont" @input="inputting" @scroll="syncScroll" :value="rawTxt" :style="{fontFamily: updatedFont}" :class="{inputThemeBlack:changeTheme}"></textarea>
+    <textarea id="inputer" @input="inputting" @scroll="syncScroll" :value="rawTxt" :style="{fontFamily: updatedFont}" :class="{inputThemeBlack:changeTheme}"></textarea>
   </div>
 </template>
 
 <script>
+
   import yzzInputtoolbar from './input-toolbar'
-  
+
   export default {
     name: 'input',
     components: {
-      yzzInputtoolbar
+      yzzInputtoolbar,
     },
     methods: {
       inputting(e) {
         this.$store.dispatch('textInput', e.target.value)
         this.$store.dispatch('saveCatch')
+        console.log(e.target.value)
       },
       syncScroll(e) {
         let outputer = document.getElementById('output')

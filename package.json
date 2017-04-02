@@ -15,6 +15,7 @@
     "sass-loader": "^6.0.3",
     "screenfull": "^3.1.0",
     "vue": "^2.2.2",
+    "vue-codemirror": "^3.0.3",
     "vue-material": "^0.7.1",
     "vuex": "^2.2.1"
   },

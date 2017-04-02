@@ -2,7 +2,7 @@
     <div class="toolbar-main">
         <ul class="toolbar-list">
             <li class="toolbar-item">
-                <md-button class="md-icon-button md-raised md-dense">
+                <md-button class="md-icon-button md-raised md-dense" id="custom" @click.native="openDialog('dialog4')">
                     <md-icon>search</md-icon>
                     <md-tooltip md-direction="bottom">查找内容</md-tooltip>
                 </md-button>
@@ -26,19 +26,32 @@
                 </md-button>
             </li>
         </ul>
+    
+    
+        <md-dialog-alert :md-title="alert2.title" :md-content-html="alert2.contentHtml" ref="dialog4">
+        </md-dialog-alert>
     </div>
 </template>
 
 <script>
     export default {
         name: 'yzz-inputtoolbar',
+        data: () => ({
+            alert2: {
+                title: '溫馨提示',
+                contentHtml: '這個功能暫時待定...正在構思中'
+            }
+        }),
         methods: {
             showSidenav() {
                 this.$store.dispatch('showMenu')
             },
             changeEditView(change) {
                 this.$store.dispatch('changeThemeFloat', 'edit-view')
-            }
+            },
+            openDialog(ref) {
+                this.$refs[ref].open();
+            },
         }
     }
 </script>
