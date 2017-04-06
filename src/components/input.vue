@@ -18,7 +18,6 @@
       inputting(e) {
         this.$store.dispatch('textInput', e.target.value)
         this.$store.dispatch('saveCatch')
-        console.log(e.target.value)
       },
       syncScroll(e) {
         let outputer = document.getElementById('output')
