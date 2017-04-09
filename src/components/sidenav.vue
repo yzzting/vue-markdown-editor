@@ -49,7 +49,7 @@
             </md-button>
     
             <md-button class="md-raised button-color font-color" title="选择字体" md-fab-trigger>
-                <md-input-container>
+                <md-input-container class="input-container-style">
                     <md-icon class="font-underline">font_download</md-icon>
                     <label for="font"></label>
                     <md-select name="font" id="font" v-model="font">

@@ -48,12 +48,12 @@
         },
         methods: {
             fullPage() {
-                if (screenfull.request()) {
+                if (!screenfull.isFullscreen) {
                     screenfull.request()
                 } else {
                     screenfull.exit()
-                    this.pageButton = this.pageButton === 'fullscreen' ? 'fullscreen_exit' : 'fullscreen'
                 }
+                this.pageButton = this.pageButton === 'fullscreen' ? 'fullscreen_exit' : 'fullscreen'
             },
             changeTheme() {
                 this.$store.dispatch('changeTheme')
