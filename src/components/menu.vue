@@ -31,10 +31,6 @@
         methods:{
             seleteArticle(i) {
                 this.$store.dispatch('selectArticle',i-1)
-                // this.$refs.leftSidenav.close();
-                // let closePage = document.getElementById('closepage')
-
-                // closePage.classList.remove('md-active')
             },
             deleteArticle(i) {
                 console.log('1')

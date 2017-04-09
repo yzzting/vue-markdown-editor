@@ -91,21 +91,7 @@
 </template>
 
 <script>
-    const setContent = (inputer, oldContent, newContent, content, endPosition, start, end) => {
-        newContent = oldContent.substring(0, endPosition) + content + oldContent.substring(endPosition, oldContent.length)
-        inputer.value = newContent
-        inputer.setSelectionRange(endPosition + start, endPosition.length - end)
-        return newContent
-    }
-    
-    const updateContent = (inputer, oldContent, newContent, startPosition, endPosition, num1, num2) => {
-        newContent = oldContent.substring(0, startPosition) + num1 + oldContent.substring(startPosition, endPosition) + num2 + oldContent.substring(endPosition, endPosition.length)
-        inputer.value = newContent
-        let len = newContent.length
-        inputer.setSelectionRange(len, len)
-        return newContent
-    }
-        
+    import Utils from '../common/utils'
     import yzzMenu from './menu'
 
     export default {
@@ -138,19 +124,19 @@
                 if (startPosition === endPosition) {
                     switch (content) {
                         case '**Blod**':
-                            newContent = setContent(inputer, oldContent, newContent, content, endPosition, 2, 2)
+                            newContent = Utils.setContent(inputer, oldContent, newContent, content, endPosition, 2, 2)
                             break
                         case '*Italic*':
-                            newContent = setContent(inputer, oldContent, newContent, content, endPosition, 1, 1)
+                            newContent = Utils.setContent(inputer, oldContent, newContent, content, endPosition, 1, 1)
                             break
                         case '[Link](http://)':
-                            newContent = setContent(inputer, oldContent, newContent, content, endPosition, 7, 2)
+                            newContent = Utils.setContent(inputer, oldContent, newContent, content, endPosition, 7, 2)
                             break
                         case '`code`':
-                            newContent = setContent(inputer, oldContent, newContent, content, endPosition, 1, 1)
+                            newContent = Utils.setContent(inputer, oldContent, newContent, content, endPosition, 1, 1)
                             break
                         case '![](http://)':
-                            newContent = setContent(inputer, oldContent, newContent, content, endPosition, 7, 2)
+                            newContent = Utils.setContent(inputer, oldContent, newContent, content, endPosition, 7, 2)
                             break
                         default:
                             newContent = oldContent.substring(0, endPosition) + content + oldContent.substring(endPosition, oldContent.length)
@@ -160,19 +146,19 @@
                 } else {
                     switch (content) {
                         case '**Blod**':
-                            newContent = updateContent(inputer, oldContent, newContent, startPosition, endPosition, '**', '**')
+                            newContent = Utils.updateContent(inputer, oldContent, newContent, startPosition, endPosition, '**', '**')
                             break
                         case '*Italic*':
-                            newContent = updateContent(inputer, oldContent, newContent, startPosition, endPosition, '*', '*')
+                            newContent = Utils.updateContent(inputer, oldContent, newContent, startPosition, endPosition, '*', '*')
                             break
                         case '[Link](http://)':
-                            newContent = updateContent(inputer, oldContent, newContent, startPosition, endPosition, '[', '](http://)')
+                            newContent = Utils.updateContent(inputer, oldContent, newContent, startPosition, endPosition, '[', '](http://)')
                             break
                         case '`code`':
-                            newContent = updateContent(inputer, oldContent, newContent, startPosition, endPosition, '`', '`')
+                            newContent = Utils.updateContent(inputer, oldContent, newContent, startPosition, endPosition, '`', '`')
                             break
                         case '![](http://)':
-                            newContent = updateContent(inputer, oldContent, newContent, startPosition, endPosition, '[', '](http://)')
+                            newContent = Utils.updateContent(inputer, oldContent, newContent, startPosition, endPosition, '[', '](http://)')
                             break
                         default:
                             return false
