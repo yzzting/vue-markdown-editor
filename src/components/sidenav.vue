@@ -66,16 +66,18 @@
     
             <md-layout md-flex md-flex-medium="33" md-hide-small class="button-add-offset">
     
-                <md-button class="md-icon-button md-raised button-color button-add" md-elevation="9" @click.native="articleAdd">
-                    <md-icon>archive</md-icon>
-                    <md-tooltip md-direction="bottom">导出HTML</md-tooltip>
-                </md-button>
-    
-                <md-button class="md-icon-button md-raised button-color button-add" md-elevation="9" @click.native="articleAdd">
-                    <md-icon>file_download</md-icon>
-                    <md-tooltip md-direction="bottom">导出MarkDown</md-tooltip>
-                </md-button>
-    
+                <a class="font-color" :href="htmlDataUrl" :download='titleHtml' @mouseenter='download("html")'>
+                    <md-button class="md-icon-button md-raised button-color button-add" md-elevation="9" @click.native="articleAdd">
+                        <md-icon>archive</md-icon>
+                        <md-tooltip md-direction="bottom">导出HTML</md-tooltip>
+                    </md-button>
+                </a>
+                <a class="font-color" :href="mdDataUrl" :download='titleMd' @mouseenter='download("md")'>
+                    <md-button class="md-icon-button md-raised button-color button-add" md-elevation="9" @click.native="articleAdd">
+                        <md-icon>file_download</md-icon>
+                        <md-tooltip md-direction="bottom">导出MarkDown</md-tooltip>
+                    </md-button>
+                </a>
                 <md-button class="md-icon-button md-raised button-color button-add" md-elevation="9" @click.native="articleAdd">
                     <md-icon>note_add</md-icon>
                     <md-tooltip md-direction="bottom">添加文章</md-tooltip>
@@ -109,7 +111,9 @@
         name: 'sidenav',
         data() {
             return {
-                font: 'georgia'
+                font: 'georgia',
+                mdDataUrl: '',
+                htmlDataUrl: ''
             }
         },
         components: {
@@ -184,10 +188,31 @@
             articleAdd() {
                 this.$store.dispatch('newArticle')
             },
+            download(mode) {
+                let data = ''
+                let selt = this
+                if (mode === 'md') {
+                    data = selt.$store.getters.articleRaw
+                    let blobData = new Blob([data])
+                    let url = URL.createObjectURL(blobData)
+                    selt.mdDataUrl = url
+                } else {
+                    data = selt.$store.getters.articleMd
+                    let blobData = new Blob([data])
+                    let url = URL.createObjectURL(blobData)
+                    selt.htmlDataUrl = url
+                }
+            }
         },
         computed: {
             showMenu() {
                 return this.$store.state.showMenu
+            },
+            titleHtml() {
+                return this.$store.getters.articleRaw.split('\n')[0] + '.html'
+            },
+            titleMd() {
+                return this.$store.getters.articleRaw.split('\n')[0] + '.md'
             }
         }
     }
