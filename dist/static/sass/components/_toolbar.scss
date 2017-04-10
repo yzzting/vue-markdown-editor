@@ -1,0 +1,31 @@
+.toolbar-main {
+    position: fixed;
+    z-index: 999;
+    background-color: transparent!important;
+    .toolbar-item {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        font-size: 17px;
+        margin:10px 15px;
+        cursor: pointer;    
+        i {
+            color:rgba(102, 128, 153, 0.45098);
+            &:hover {
+                color: rgba(44,62,80,0.65083);
+            }
+        }
+    }
+}
+
+.input-main {
+    .toolbar-main {
+        margin-left: 30%;
+    }
+}
+
+.output-main {
+    .toolbar-main {
+        margin-left: 25%;
+    }
+}
