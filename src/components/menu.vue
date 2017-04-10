@@ -33,7 +33,6 @@
                 this.$store.dispatch('selectArticle',i-1)
             },
             deleteArticle(i) {
-                console.log('1')
                 this.$store.dispatch('deleteArticle',i-1)
             }
         }
