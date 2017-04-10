@@ -41,7 +41,7 @@
                 <md-tooltip md-direction="bottom">标题</md-tooltip>
             </md-button>
     
-           
+    
     
             <md-button class="md-icon-button md-raised button-color font-color" @click.native='buttonFunction("\n- [ ] ")'>
                 <md-icon>check circle</md-icon>
@@ -65,6 +65,17 @@
             </md-button>
     
             <md-layout md-flex md-flex-medium="33" md-hide-small class="button-add-offset">
+    
+                <md-button class="md-icon-button md-raised button-color button-add" md-elevation="9" @click.native="articleAdd">
+                    <md-icon>archive</md-icon>
+                    <md-tooltip md-direction="bottom">导出HTML</md-tooltip>
+                </md-button>
+    
+                <md-button class="md-icon-button md-raised button-color button-add" md-elevation="9" @click.native="articleAdd">
+                    <md-icon>file_download</md-icon>
+                    <md-tooltip md-direction="bottom">导出MarkDown</md-tooltip>
+                </md-button>
+    
                 <md-button class="md-icon-button md-raised button-color button-add" md-elevation="9" @click.native="articleAdd">
                     <md-icon>note_add</md-icon>
                     <md-tooltip md-direction="bottom">添加文章</md-tooltip>
@@ -93,7 +104,7 @@
 <script>
     import Utils from '../common/utils'
     import yzzMenu from './menu'
-
+    
     export default {
         name: 'sidenav',
         data() {
@@ -174,7 +185,7 @@
                 this.$store.dispatch('newArticle')
             },
         },
-        computed:{
+        computed: {
             showMenu() {
                 return this.$store.state.showMenu
             }
