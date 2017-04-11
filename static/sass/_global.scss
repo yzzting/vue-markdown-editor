@@ -9,6 +9,40 @@ body {
   height: 100%;
 }
 
+.md-list {
+  padding: 0!important;
+  color: #fff!important;
+  background-color: #189BFA!important; 
+}
+
+.md-menu-content.md-select-content.md-theme-default.md-size-0.md-direction-bottom-right.md-active {
+  left: 584px!important;
+  z-index: 999;
+}
+
+.md-tooltip {
+  padding: 2px 20px!important;
+  font-size: 12px!important;
+}
+
+.input-container-style {
+  margin: 0!important;
+  padding-top: 0!important;
+  min-height: 0!important;
+}
+
+.button-add-offset{
+  justify-content: flex-end;
+}
+
+.md-toolbar-container {
+  justify-content: center;
+  align-self: auto;
+  .md-title {
+    font-size: 24px!important;    
+  }
+}
+
 .md-toolbar {
   background-color: #E84A5F!important;
 }
