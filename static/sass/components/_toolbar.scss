@@ -1,12 +1,10 @@
 .toolbar-main {
     position: fixed;
     z-index: 999;
-    background-color: transparent!important;
     .toolbar-item {
         display: inline-block;
         width: 20px;
         height: 20px;
-        font-size: 17px;
         margin:10px 15px;
         cursor: pointer;    
         i {
