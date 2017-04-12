@@ -30,7 +30,7 @@ const state = {
     content: 'Untitled\n---\n',
     current: true
   }],
-  font: '',
+  font: 'Monospace',
   theme: true,
   themeIuputFloat: 'left',
   themeOutputFloat: 'right',
@@ -68,11 +68,9 @@ const mutations = {
       state.themeMargin = state.themeMargin === '0 auto' ? '' : '0 auto'
       state.themeEditView = state.themeEditView === false ? true : false
     }
-    console.log(state.themeIuputFloat + state.themeOutputFloat)
   },
   UPDATE_FONT(state, font) {
     state.font = font
-    console.log(state.font)
   },
   NEW_ARTICLE(state) {
     for (let i = 0, len = state.articleList.length; i < len; i++) {

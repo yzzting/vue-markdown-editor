@@ -111,7 +111,7 @@
         name: 'sidenav',
         data() {
             return {
-                font: 'georgia',
+                font: 'monospace',
                 mdDataUrl: '',
                 htmlDataUrl: ''
             }
