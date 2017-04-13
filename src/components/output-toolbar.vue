@@ -2,12 +2,6 @@
     <div class="toolbar-main">
         <ul class="toolbar-list">
             <li class="toolbar-item">
-                <md-button class="md-icon-button md-raised md-dense">
-                    <md-icon>list</md-icon>
-                    <md-tooltip md-direction="bottom">内容目录</md-tooltip>
-                </md-button>
-            </li>
-            <li class="toolbar-item">
                 <md-button class="md-icon-button md-raised md-dense" @click.native="changeThemeFloat('change')">
                     <md-icon>{{changeButton}}</md-icon>
                     <md-tooltip md-direction="bottom">交换左右视图</md-tooltip>

@@ -1,7 +1,7 @@
 <template>
     <div class="output-main" :class="{outputThemeBlack:changeTheme}" :style="{float:themeOutputFloat,margin:themeMargin}">
         <yzz-outputtoolbar></yzz-outputtoolbar>
-        <div class="markdown-body" v-html="ripeTxt" id="output">
+        <div class="markdown-body" v-html="ripeTxt" id="output" :style="{fontFamily: updatedFont}">
         </div>
     </div>
 </template>
@@ -26,7 +26,10 @@
             },
             themeMargin() {
                 return this.$store.state.themeMargin
-            }
+            },
+            updatedFont() {
+                return this.$store.getters.articleFont
+            },
         }
     }
 </script>
