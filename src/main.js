@@ -9,6 +9,15 @@ Vue.config.productionTip = false
 
 Vue.use(VueMaterial)
 
+Vue.material.registerTheme({
+  default: {
+    primary: {
+      color: 'red',
+      hue: 600
+    },
+  }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

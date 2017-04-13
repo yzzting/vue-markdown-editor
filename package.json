@@ -11,11 +11,11 @@
   "dependencies": {
     "highlight.js": "^9.10.0",
     "marked": "^0.3.6",
+    "muse-ui": "^2.0.2",
     "node-sass": "^4.5.1",
     "sass-loader": "^6.0.3",
     "screenfull": "^3.1.0",
     "vue": "^2.2.2",
-    "vue-codemirror": "^3.0.3",
     "vue-material": "^0.7.1",
     "vuex": "^2.2.1"
   },

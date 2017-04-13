@@ -48,7 +48,7 @@
                 <md-tooltip md-direction="bottom">复选框</md-tooltip>
             </md-button>
     
-            <md-button class="md-raised button-color font-color" title="选择字体" md-fab-trigger>
+            <md-button class="md-raised button-color font-color" title="选择字体">
                 <md-input-container class="input-container-style">
                     <md-icon class="font-underline">font_download</md-icon>
                     <label for="font"></label>
@@ -113,8 +113,7 @@
             return {
                 font: 'monospace',
                 mdDataUrl: '',
-                htmlDataUrl: ''
-            }
+                htmlDataUrl: ''            }
         },
         components: {
             yzzMenu,

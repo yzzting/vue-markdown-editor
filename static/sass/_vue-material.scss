@@ -1407,7 +1407,8 @@ button:focus {
   align-items: center;
   fill: currentColor;
   text-rendering: optimizeLegibility;
-  vertical-align: middle
+  vertical-align: middle;
+  color:#fff;
 }
 
 .md-icon.md-size-2x {
@@ -4587,6 +4588,7 @@ img.md-icon {
 
 .md-select .md-menu,
 .md-select .md-select-value {
+  font-weight: 800;
   width: 100%;
   height: 32px;
   display: block;
@@ -5474,6 +5476,10 @@ img.md-icon {
 
 .md-table .md-select {
   min-width: 84px
+}
+
+.md-select-value {
+  color:#fff;
 }
 
 .md-table .md-option,
