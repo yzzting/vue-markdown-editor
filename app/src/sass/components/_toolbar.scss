@@ -1,5 +1,5 @@
 .toolbar-main {
-    position: fixed;
+    position: absolute;
     z-index: 999;
     .toolbar-item {
         display: inline-block;
@@ -18,12 +18,12 @@
 
 .input-main {
     .toolbar-main {
-        margin-left: 30%;
+        left: 65%;
     }
 }
 
 .output-main {
     .toolbar-main {
-        margin-left: 25%;
+        left: 70%;
     }
 }

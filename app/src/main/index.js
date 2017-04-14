@@ -27,9 +27,9 @@ function createWindow() {
     mainWindow = null
   })
 
-  mainWindow.webContents.on('devtools-opened',() => {
-    mainWindow.webContents.closeDevTools()
-  })
+  // mainWindow.webContents.on('devtools-opened', () => {
+  //   // mainWindow.webContents.closeDevTools()
+  // })
 
   // eslint-disable-next-line no-console
   console.log('mainWindow opened')
