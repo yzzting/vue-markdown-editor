@@ -33,6 +33,8 @@ function createWindow() {
 
   // eslint-disable-next-line no-console
   console.log('mainWindow opened')
+
+  const see = mainWindow.webContents.session
 }
 
 app.on('ready', createWindow)
@@ -40,6 +42,7 @@ app.on('ready', createWindow)
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
+    see.clearStorageData(localstorage)
   }
 })
 

@@ -65,7 +65,6 @@
             </md-button>
     
             <md-layout md-flex md-flex-medium="33" md-hide-small class="button-add-offset">
-    
                 <a class="font-color" :href="htmlDataUrl" :download='titleHtml' @mouseenter='download("html")'>
                     <md-button class="md-icon-button md-raised button-color button-add" md-elevation="9" @click.native="articleAdd">
                         <md-icon>archive</md-icon>
@@ -113,7 +112,8 @@
             return {
                 font: 'monospace',
                 mdDataUrl: '',
-                htmlDataUrl: ''            }
+                htmlDataUrl: ''
+            }
         },
         components: {
             yzzMenu,
@@ -125,59 +125,33 @@
             toggleLeftSidenav() {
                 this.$refs.leftSidenav.toggle();
             },
-            buttonFunction(content) {
-                let inputer = document.querySelector('#inputer')
+            buttonFunction(content, codemirror) {
+                let inputer = document.getElementById('inputer')
                 let startPosition = inputer.selectionStart
                 let endPosition = inputer.selectionEnd
-                let oldContent = inputer.value
-    
-                inputer.focus()
-    
+                let oldContent = this.$store.getters.articleRaw
                 let newContent = ''
     
-                if (startPosition === endPosition) {
-                    switch (content) {
-                        case '**Blod**':
-                            newContent = Utils.setContent(inputer, oldContent, newContent, content, endPosition, 2, 2)
-                            break
-                        case '*Italic*':
-                            newContent = Utils.setContent(inputer, oldContent, newContent, content, endPosition, 1, 1)
-                            break
-                        case '[Link](http://)':
-                            newContent = Utils.setContent(inputer, oldContent, newContent, content, endPosition, 7, 2)
-                            break
-                        case '`code`':
-                            newContent = Utils.setContent(inputer, oldContent, newContent, content, endPosition, 1, 1)
-                            break
-                        case '![](http://)':
-                            newContent = Utils.setContent(inputer, oldContent, newContent, content, endPosition, 7, 2)
-                            break
-                        default:
-                            newContent = oldContent.substring(0, endPosition) + content + oldContent.substring(endPosition, oldContent.length)
-                            inputer.value = newContent
-                            break
-                    }
-                } else {
-                    switch (content) {
-                        case '**Blod**':
-                            newContent = Utils.updateContent(inputer, oldContent, newContent, startPosition, endPosition, '**', '**')
-                            break
-                        case '*Italic*':
-                            newContent = Utils.updateContent(inputer, oldContent, newContent, startPosition, endPosition, '*', '*')
-                            break
-                        case '[Link](http://)':
-                            newContent = Utils.updateContent(inputer, oldContent, newContent, startPosition, endPosition, '[', '](http://)')
-                            break
-                        case '`code`':
-                            newContent = Utils.updateContent(inputer, oldContent, newContent, startPosition, endPosition, '`', '`')
-                            break
-                        case '![](http://)':
-                            newContent = Utils.updateContent(inputer, oldContent, newContent, startPosition, endPosition, '[', '](http://)')
-                            break
-                        default:
-                            return false
-                            break
-                    }
+                switch (content) {
+                    case '**Blod**':
+                        newContent = Utils.setContent(inputer, oldContent, newContent, content, endPosition, 2, 2)
+                        break
+                    case '*Italic*':
+                        newContent = Utils.setContent(inputer, oldContent, newContent, content, endPosition, 1, 1)
+                        break
+                    case '[Link](http://)':
+                        newContent = Utils.setContent(inputer, oldContent, newContent, content, endPosition, 7, 2)
+                        break
+                    case '`code`':
+                        newContent = Utils.setContent(inputer, oldContent, newContent, content, endPosition, 1, 1)
+                        break
+                    case '![](http://)':
+                        newContent = Utils.setContent(inputer, oldContent, newContent, content, endPosition, 7, 2)
+                        break
+                    default:
+                        newContent = oldContent.substring(0, endPosition) + content + oldContent.substring(endPosition, oldContent.length)
+                        inputer.value = newContent
+                        break
                 }
     
                 if (newContent.length) {
