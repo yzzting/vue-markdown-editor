@@ -14,8 +14,8 @@ npm run dev
 # build electron app for production
 npm run build
 
+```
 
 ## Bug List
-
 
 - [ ] localStorage有莫名的bug，待修复
