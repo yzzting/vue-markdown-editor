@@ -103,8 +103,21 @@
 </template>
 
 <script>
-    import Utils from '../common/utils'
     import yzzMenu from './menu'
+    
+    const setContent = (inputer, oldContent, newContent, content, endPosition, start, end) => {
+        newContent = oldContent.substring(0, endPosition) + content + oldContent.substring(endPosition, oldContent.length)
+        inputer.value = newContent
+        inputer.setSelectionRange(endPosition + start, endPosition + content.length - end)
+        return newContent
+    }
+    const upDateContent = (inputer, oldContent, newContent, startPosition, endPosition, symbol1, symbol2) => {
+        newContent = oldContent.substring(0, startPosition) + symbol1 + oldContent.substring(startPosition, endPosition) + symbol2 + oldContent.substring(endPosition, oldContent.length)
+        inputer.value = newContent
+        let len = newContent.length
+        inputer.setSelectionRange(len, len)
+        return newContent
+    }
     
     export default {
         name: 'sidenav',
@@ -125,33 +138,58 @@
             toggleLeftSidenav() {
                 this.$refs.leftSidenav.toggle();
             },
-            buttonFunction(content, codemirror) {
+            buttonFunction(content) {
                 let inputer = document.getElementById('inputer')
                 let startPosition = inputer.selectionStart
                 let endPosition = inputer.selectionEnd
                 let oldContent = this.$store.getters.articleRaw
                 let newContent = ''
     
-                switch (content) {
-                    case '**Blod**':
-                        newContent = Utils.setContent(inputer, oldContent, newContent, content, endPosition, 2, 2)
-                        break
-                    case '*Italic*':
-                        newContent = Utils.setContent(inputer, oldContent, newContent, content, endPosition, 1, 1)
-                        break
-                    case '[Link](http://)':
-                        newContent = Utils.setContent(inputer, oldContent, newContent, content, endPosition, 7, 2)
-                        break
-                    case '`code`':
-                        newContent = Utils.setContent(inputer, oldContent, newContent, content, endPosition, 1, 1)
-                        break
-                    case '![](http://)':
-                        newContent = Utils.setContent(inputer, oldContent, newContent, content, endPosition, 7, 2)
-                        break
-                    default:
-                        newContent = oldContent.substring(0, endPosition) + content + oldContent.substring(endPosition, oldContent.length)
-                        inputer.value = newContent
-                        break
+                inputer.focus()
+    
+                if (startPosition === endPosition) {
+                    switch (content) {
+                        case '**Bold**':
+                            newContent = setContent(inputer, oldContent, newContent, content, endPosition, 2, 2)
+                            break
+                        case '*Italic*':
+                            newContent = setContent(inputer, oldContent, newContent, content, endPosition, 1, 1)
+                            break
+                        case '[Link](http://example.com/)':
+                            newContent = setContent(inputer, oldContent, newContent, content, endPosition, 7, 1)
+                            break
+                        case '`code`':
+                            newContent = setContent(inputer, oldContent, newContent, content, endPosition, 1, 1)
+                            break
+                        case '![Img](http://example.com/)':
+                            newContent = setContent(inputer, oldContent, newContent, content, endPosition, 7, 1)
+                            break
+                        default:
+                            newContent = oldContent.substring(0, endPosition) + content + oldContent.substring(endPosition, oldContent.length)
+                            inputer.value = newContent
+                            break
+                    }
+                } else {
+                    switch (content) {
+                        case '**Bold**':
+                            newContent = upDateContent(inputer, oldContent, newContent, startPosition, endPosition, '**', '**')
+                            break
+                        case '*Italic*':
+                            newContent = upDateContent(inputer, oldContent, newContent, startPosition, endPosition, '*', '*')
+                            break
+                        case '`code`':
+                            newContent = upDateContent(inputer, oldContent, newContent, startPosition, endPosition, '`', '`')
+                            break
+                        case '[Link](http://example.com/)':
+                            newContent = upDateContent(inputer, oldContent, newContent, startPosition, endPosition, '[', '](http://example.com/)')
+                            break
+                        case '![Img](http://example.com/)':
+                            newContent = upDateContent(inputer, oldContent, newContent, startPosition, endPosition, '![', '](http://example.com/)')
+                            break
+                        default:
+                            return false
+                            break
+                    }
                 }
     
                 if (newContent.length) {

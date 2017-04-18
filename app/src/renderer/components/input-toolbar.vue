@@ -21,15 +21,23 @@
             </li>
             <li class="toolbar-item">
                 <md-button class="md-icon-button md-raised md-dense">
-                    <md-icon>help_outline</md-icon>
-                    <md-tooltip md-direction="bottom">Markdown语法帮助</md-tooltip>
+                    <md-icon>keyboard</md-icon>
+                    <md-tooltip md-direction="bottom">选择编辑器模式</md-tooltip>
+                    <md-input-container class="input-container-style">
+                        <label for="editmode"></label>
+                        <md-select name="editmode" id="editmode">
+                            <md-option value="sublime" @click.native="changeEDitMode('sublime')">Sublime</md-option>
+                            <md-option value="vim" @click.native="changeEDitMode('vim')">Vim</md-option>
+                            <md-option value='"emacs"' @click.native="changeEDitMode('emacs')">Emacs</md-option>
+                        </md-select>
+                    </md-input-container>
                 </md-button>
             </li>
         </ul>
-
+    
         <md-dialog-alert :md-title="alert2.title" :md-content-html="alert2.contentHtml" ref="dialog4">
         </md-dialog-alert>
-
+    
     </div>
 </template>
 
@@ -45,6 +53,9 @@
         methods: {
             showSidenav() {
                 this.$store.dispatch('showMenu')
+            },
+            changeEDitMode(mode) {
+                this.$store.dispatch('changeEditorMode', mode)
             },
             changeEditView(change) {
                 this.$store.dispatch('changeThemeFloat', 'edit-view')

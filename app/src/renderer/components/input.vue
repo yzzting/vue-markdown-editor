@@ -2,7 +2,7 @@
   <div class="input-main" :style="{float:themeIuputFloat,margin:themeIuputMargin}">
     <yzz-inputtoolbar :class="{fontWhile:changeTheme}"></yzz-inputtoolbar>
     <!--<textarea id="inputer" @input="inputting" @scroll="syncScroll" :value="rawTxt" :style="{fontFamily: updatedFont}" :class="{inputThemeBlack:changeTheme}"></textarea> -->
-    <codemirror v-model="rawTxt" :options="editorOption" @cursorActivity="onEditorCursorActivity" id="inputer" @scroll="syncScroll"> 
+    <codemirror ref="editor" v-model="rawTxt" :options="editorOption" @change="onEditorCursorActivity" id="inputer" @scroll="syncScroll">
     </codemirror>
   </div>
 </template>
@@ -32,6 +32,8 @@
   require('codemirror/addon/search/searchcursor.js')
   require('codemirror/addon/search/search.js')
   require('codemirror/keymap/sublime.js')
+  require('codemirror/keymap/vim.js')
+  require('codemirror/keymap/emacs.js')
   // foldGutter
   require('codemirror/addon/fold/foldgutter.css')
   require('codemirror/addon/fold/brace-fold.js')
@@ -55,10 +57,13 @@
           styleActiveLine: true,
           lineNumbers: true,
           line: true,
-          keyMap: "sublime",
+          keyMap: this.$store.state.editorMode, 
           mode: 'text/x-markdown',
           theme: 'mdn-like',
-          highlightSelectionMatches: { showToken: /\w/, annotateScrollbar: true },
+          highlightSelectionMatches: {
+            showToken: /\w/,
+            annotateScrollbar: true
+          },
         }
       }
     },
@@ -67,12 +72,15 @@
         let outputer = document.getElementById('output')
         outputer.scrollTop = e.target.scrollTop
       },
-      onEditorCursorActivity(codemirror) {
-        this.$store.dispatch('textInput',codemirror.getValue())
+      onEditorCursorActivity(editor) {
+        this.$store.dispatch('textInput', editor)
         this.$store.dispatch('saveCatch')
-      },
+      }
     },
     computed: {
+      editor() {
+        return this.$refs.editor.editor
+      },
       rawTxt() {
         return this.$store.getters.articleRaw
       },
