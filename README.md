@@ -18,4 +18,5 @@ npm run build
 
 ## Bug List
 
-- [ ] localStorage有莫名的bug，待修复
+- [ ] localStorage有莫名的bug，清理页面的localStorage可能解决问题
+- [ ] 选择编辑器模式，偶尔生效
