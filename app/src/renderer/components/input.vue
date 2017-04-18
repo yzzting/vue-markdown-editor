@@ -32,6 +32,8 @@
   require('codemirror/addon/search/searchcursor.js')
   require('codemirror/addon/search/search.js')
   require('codemirror/keymap/sublime.js')
+  require('codemirror/keymap/vim.js')
+  require('codemirror/keymap/emacs.js')
   // foldGutter
   require('codemirror/addon/fold/foldgutter.css')
   require('codemirror/addon/fold/brace-fold.js')
@@ -55,7 +57,7 @@
           styleActiveLine: true,
           lineNumbers: true,
           line: true,
-          keyMap: "sublime",
+          keyMap: this.$store.state.editorMode, 
           mode: 'text/x-markdown',
           theme: 'mdn-like',
           highlightSelectionMatches: {
@@ -73,7 +75,7 @@
       onEditorCursorActivity(editor) {
         this.$store.dispatch('textInput', editor)
         this.$store.dispatch('saveCatch')
-      },
+      }
     },
     computed: {
       editor() {

@@ -192,8 +192,6 @@
                     }
                 }
     
-    
-    
                 if (newContent.length) {
                     this.$store.dispatch('textInput', newContent)
                 }

@@ -36,7 +36,8 @@ const state = {
   themeOutputFloat: 'right',
   themeMargin: '',
   themeEditView: true,
-  themeReadView: true
+  themeReadView: true,
+  editorMode: 'sublime'
 }
 
 const saveID = (state) => {
@@ -54,6 +55,15 @@ const mutations = {
   },
   CHANGE_THEME(state) {
     state.theme = state.theme === false ? true : false
+  },
+  CHANGE_EDITORMODE(state,mode) {
+    if(mode === 'vim') {
+      state.editorMode = mode
+    } else if (mode === 'emacs') {
+      state.editorMode = mode
+    } else {
+      state.editorMode = mode
+    }
   },
   CHANGE_THEMEFLOAT(state, pos) {
     if (pos === 'change') {
@@ -84,6 +94,8 @@ const mutations = {
     }
 
     state.articleList.push(newOne)
+
+    console.log(state.articleList)
   },
   DELETE_ARTICLE(state, index) {
     if (state.articleList.length > 1) {
@@ -168,6 +180,11 @@ const actions = {
     commit
   }) {
     commit('CHANGE_THEME')
+  },
+  changeEditorMode({
+    commit
+  },mode) {
+    commit('CHANGE_EDITORMODE',mode)
   },
   changeThemeFloat({
     commit
