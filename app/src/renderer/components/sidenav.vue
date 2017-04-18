@@ -134,6 +134,8 @@
         methods: {
             selectFont() {
                 this.$store.dispatch('updateFont', this.font)
+                let e = document.getElementsByClassName('CodeMirror')[0]
+                e.style.fontFamily = this.font
             },
             toggleLeftSidenav() {
                 this.$refs.leftSidenav.toggle();
