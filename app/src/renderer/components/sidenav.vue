@@ -1,5 +1,5 @@
 <template>
-    <div class="sidenav-main" v-show="showMenu">
+    <div class="sidenav-main" v-show="showMenu" @keydown="keyListen">
         <md-toolbar class="toolbar-color">
             <md-button class="md-icon-button md-raised button-color" md-elevation="9" @click.native="toggleLeftSidenav">
                 <md-icon>menu</md-icon>
@@ -18,7 +18,7 @@
             </md-button>
             <md-button class="md-icon-button md-raised button-color" md-elevation="9" @click.native='buttonFunction("\n> ")'>
                 <md-icon>format_quote</md-icon>
-                <md-tooltip md-direction="bottom">引用</md-tooltip>
+                <md-tooltip md-direction="bot1tom">引用</md-tooltip>
             </md-button>
             <md-button class="md-icon-button md-raised button-color" md-elevation="9" @click.native='buttonFunction("`code`")'>
                 <md-icon>code</md-icon>
@@ -214,6 +214,27 @@
                     let blobData = new Blob([data])
                     let url = URL.createObjectURL(blobData)
                     selt.htmlDataUrl = url
+                }
+            },
+            keyListen(e) {
+                if (e.ctrlKey && !e.altKey && !e.shiftKey) {
+                    // ctrl +
+                    switch (e.keyCode) {
+                        case 66:
+                            {
+                                // B
+                                e.preventDefault()
+                                this.articleAdd()
+                                break;
+                            }
+                        case 73:
+                            {
+                                // I
+                                e.preventDefault()
+                                console.log('1234')
+                                break;
+                            }
+                    }
                 }
             }
         },
