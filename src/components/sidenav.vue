@@ -113,7 +113,8 @@
             return {
                 font: 'monospace',
                 mdDataUrl: '',
-                htmlDataUrl: ''            }
+                htmlDataUrl: ''
+            }
         },
         components: {
             yzzMenu,

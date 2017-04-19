@@ -1,14 +1,13 @@
 <template>
-  <div class="input-main" :style="{float:themeIuputFloat,margin:themeIuputMargin}">
-    <yzz-inputtoolbar :class="{fontWhile:changeTheme}"></yzz-inputtoolbar>
+  <div class="input-main" :style="{float:themeIuputFloat,margin:themeIuputMargin}" @keydown="keyListen">
+    <yzz-inputtoolbar ref="inputtoolbar" :class="{fontWhile:changeTheme}"></yzz-inputtoolbar>
     <textarea id="inputer" @input="inputting" @scroll="syncScroll" :value="rawTxt" :style="{fontFamily: updatedFont}" :class="{inputThemeBlack:changeTheme}"></textarea>
   </div>
 </template>
 
 <script>
-
   import yzzInputtoolbar from './input-toolbar'
-
+  
   export default {
     name: 'input',
     components: {
@@ -22,6 +21,18 @@
       syncScroll(e) {
         let outputer = document.getElementById('output')
         outputer.scrollTop = e.target.scrollTop
+      },
+      keyListen(e) {
+        if (!e.ctrlKey && !e.altKey && !e.shiftKey) {
+          switch (e.keyCode) {
+            case 120:
+              {
+                e.preventDefault()
+                this.$refs.inputtoolbar.changeEditView()
+                break;
+              }
+          }
+        }
       }
     },
     computed: {
