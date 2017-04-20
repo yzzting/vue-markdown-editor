@@ -20,16 +20,17 @@
                 </md-button>
             </li>
             <li class="toolbar-item">
-                <md-button class="md-icon-button md-raised md-dense">
-                    <md-icon>help_outline</md-icon>
-                    <md-tooltip md-direction="bottom">Markdown语法帮助</md-tooltip>
+                <md-button class="md-icon-button md-raised md-dense" @click.native="changeTheme">
+                    <md-icon>cached</md-icon>
+                    <md-tooltip md-direction="bottom">主题切换</md-tooltip>
                 </md-button>
             </li>
+    
         </ul>
-
+    
         <md-dialog-alert :md-title="alert2.title" :md-content-html="alert2.contentHtml" ref="dialog4">
         </md-dialog-alert>
-
+    
     </div>
 </template>
 
@@ -51,6 +52,9 @@
             },
             openDialog(ref) {
                 this.$refs[ref].open();
+            },
+            changeTheme() {
+                this.$store.dispatch('changeTheme')
             },
         }
     }

@@ -8,15 +8,15 @@
                 </md-button>
             </li>
             <li class="toolbar-item">
-                <md-button class="md-icon-button md-raised md-dense" @click.native="changeEditView('read-view')"> 
+                <md-button class="md-icon-button md-raised md-dense" @click.native="changeEditView('read-view')">
                     <md-icon>desktop_mac</md-icon>
                     <md-tooltip md-direction="bottom">阅读模式</md-tooltip>
                 </md-button>
             </li>
             <li class="toolbar-item">
-                <md-button class="md-icon-button md-raised md-dense" @click.native="changeTheme">
-                    <md-icon>cached</md-icon>
-                    <md-tooltip md-direction="bottom">主题切换</md-tooltip>
+                <md-button class="md-icon-button md-raised md-dense">
+                    <md-icon>help_outline</md-icon>
+                    <md-tooltip md-direction="bottom">Markdown语法帮助</md-tooltip>
                 </md-button>
             </li>
             <li class="toolbar-item">
@@ -48,9 +48,6 @@
                     screenfull.exit()
                 }
                 this.pageButton = this.pageButton === 'fullscreen' ? 'fullscreen_exit' : 'fullscreen'
-            },
-            changeTheme() {
-                this.$store.dispatch('changeTheme')
             },
             changeThemeFloat(change) {
                 this.$store.dispatch('changeThemeFloat', 'change')

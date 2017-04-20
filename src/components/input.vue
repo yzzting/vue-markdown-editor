@@ -31,6 +31,18 @@
                 this.$refs.inputtoolbar.changeEditView()
                 break;
               }
+            case 119:
+              {
+                e.preventDefault()
+                this.$refs.inputtoolbar.showSidenav()
+                break;
+              }
+            case 118:
+              {
+                e.preventDefault()
+                this.$refs.inputtoolbar.changeTheme()
+                break;
+              }
           }
         }
       }
