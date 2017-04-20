@@ -44,6 +44,17 @@
                 break;
               }
           }
+  
+        } else if (e.ctrlKey && e.altKey && !e.shiftKey) {
+          // ctrl + alt
+          switch (e.keyCode) {
+            case 78:
+              {
+                e.preventDefault()
+                this.$store.dispatch('newArticle')
+                break;
+              }
+          }
         }
       }
     },
