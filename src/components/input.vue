@@ -55,6 +55,16 @@
                 break;
               }
           }
+        } else if (e.ctrlKey && !e.altKey && !e.shiftKey) {
+          // ctrl +
+          switch (e.keyCode) {
+            case 66:
+              {
+                e.preventDefault()
+                eventBus.$emit('keydownButton')
+                break;
+              }
+          }
         }
       }
     },
