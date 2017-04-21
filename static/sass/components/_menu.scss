@@ -10,8 +10,19 @@
     height: 60px;
     background-color: #fff;    
     color: #000;
-    span {
+    width: 100%;
+    button {
         line-height: 60px;
+        min-width: 200px;
+        width:80%;
+        cursor:pointer;
+        height: 60px;
+        padding: 0;
+    }
+    .md-icon-button {
+      right:-15%;
+      top: 0;
+      padding: 0;
     }
   }
   .current {
