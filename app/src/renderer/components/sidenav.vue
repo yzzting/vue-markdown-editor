@@ -1,5 +1,5 @@
 <template>
-    <div class="sidenav-main" v-show="showMenu" @keydown="keyListen">
+    <div class="sidenav-main" v-show="showMenu">
         <md-toolbar class="toolbar-color">
             <md-button class="md-icon-button md-raised button-color" md-elevation="9" @click.native="toggleLeftSidenav">
                 <md-icon>menu</md-icon>
@@ -207,27 +207,6 @@
                     selt.htmlDataUrl = url
                 }
             },
-            keyListen(e) {
-                if (e.ctrlKey && !e.altKey && !e.shiftKey) {
-                    // ctrl +
-                    switch (e.keyCode) {
-                        case 66:
-                            {
-                                // B
-                                e.preventDefault()
-                                this.articleAdd()
-                                break;
-                            }
-                        case 73:
-                            {
-                                // I
-                                e.preventDefault()
-                                console.log('1234')
-                                break;
-                            }
-                    }
-                }
-            }
         },
         computed: {
             showMenu() {

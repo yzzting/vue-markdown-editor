@@ -95,7 +95,6 @@ const mutations = {
 
     state.articleList.push(newOne)
 
-    console.log(state.articleList)
   },
   DELETE_ARTICLE(state, index) {
     if (state.articleList.length > 1) {
