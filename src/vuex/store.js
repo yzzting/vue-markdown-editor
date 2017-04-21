@@ -27,7 +27,7 @@ const state = {
   showMenu: true,
   articleList: [{
     id: createID(),
-    content: 'Untitled\n---\n',
+    content: 'Untitled\n---\n\n Content',
     current: true
   }],
   font: 'Monospace',
@@ -79,7 +79,7 @@ const mutations = {
 
     let newOne = {
       id: createID(),
-      content: 'Untitled\n---\n',
+      content: 'Untitled\n---\n\n Content',
       current: true
     }
 
@@ -88,19 +88,16 @@ const mutations = {
   DELETE_ARTICLE(state, index) {
     if (state.articleList.length > 1) {
       let idArr = localStorage.getItem('idArr').split(',')
-      let pos = idArr.indexOf(state.articleList[index].id)
-      //删除localStorage中的数据
-      idArr.splice(pos, 1)
+      let loc = idArr.indexOf(state.articleList[index].id)
+      idArr.splice(loc, 1)
       localStorage.setItem('idArr', idArr)
 
       localStorage.removeItem(state.articleList[index].id)
-
       state.articleList.splice(index, 1)
 
       for (let i = 0, len = state.articleList.length; i < len; i++) {
         state.articleList[i].current = false
       }
-
       state.articleList[0].current = true
     }
   },

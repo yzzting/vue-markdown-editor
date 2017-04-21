@@ -9,8 +9,8 @@
             <md-list-expand class="article-list">
                 <md-list>
                     <template v-for='i in articleList.length'>
-                        <md-list-item :class='{"current": articleList[i - 1].current}' class="article-list-item" @click.native="seleteArticle(i)">
-                            <span class="article-title">
+                        <md-list-item :class='{"current": articleList[i - 1].current}' class="article-list-item">
+                            <span class="article-title" @click.native="seleteArticle(i)">
                                 {{ articleList[i - 1].content.split('\n')[0] }}
                             </span>
                             <md-button @click.native="deleteArticle(i)" class="md-icon-button">
@@ -41,7 +41,7 @@
             },
             deleteArticle(i) {
                 this.$store.dispatch('deleteArticle', i - 1)
-                // this.toggleLeftSidenav()
+                this.toggleLeftSidenav()
                 // this.$store.dispatch('selectArticle', i - 1)
             },
             toggleLeftSidenav() {
