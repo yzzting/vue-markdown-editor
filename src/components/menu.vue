@@ -10,10 +10,10 @@
                 <md-list>
                     <template v-for='i in articleList.length'>
                         <md-list-item :class='{"current": articleList[i - 1].current}' class="article-list-item">
-                            <span class="article-title" @click.native="seleteArticle(i)">
+                            <md-button class="article-title" @click.native="seleteArticle(i)">
                                 {{ articleList[i - 1].content.split('\n')[0] }}
-                            </span>
-                            <md-button @click.native="deleteArticle(i)" class="md-icon-button">
+                            </md-button>
+                            <md-button v-if="articleList.length > 1" @click.native="deleteArticle(i)" class="md-icon-button">
                                 <md-icon>delete</md-icon>
                             </md-button>
                         </md-list-item>
@@ -38,11 +38,11 @@
         methods: {
             seleteArticle(i) {
                 this.$store.dispatch('selectArticle', i - 1)
+                this.toggleLeftSidenav()
             },
             deleteArticle(i) {
                 this.$store.dispatch('deleteArticle', i - 1)
                 this.toggleLeftSidenav()
-                // this.$store.dispatch('selectArticle', i - 1)
             },
             toggleLeftSidenav() {
                 this.$refs.leftSidenav.toggle();

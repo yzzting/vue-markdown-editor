@@ -131,24 +131,20 @@ const mutations = {
   },
   ARTICLE_LIST_FROM_LOCAL(state) {
     //从localStorage中取出数据,存进前面定义好的articleList数组中
-
     if (localStorage.getItem('idArr')) {
       state.articleList = null
       let idArr = localStorage.getItem('idArr').split(',')
       let articleArr = []
-
       for (let i = 0, len = idArr.length; i < len; i++) {
         let articleObj = {
           id: '',
           content: '',
           current: false
         }
-
         articleObj.id = idArr[i]
         articleObj.content = localStorage.getItem(idArr[i])
         articleArr.push(articleObj)
       }
-
       state.articleList = articleArr
       state.articleList[0].current = true
     }
