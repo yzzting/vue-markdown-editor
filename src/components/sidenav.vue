@@ -90,16 +90,7 @@
                 </a>
             </md-layout>
         </md-toolbar>
-    
-        <md-sidenav class="md-left" ref="leftSidenav" id="closepage">
-            <md-toolbar class="md-large">
-                <div class="md-toolbar-container">
-                    <h3 class="md-title">vue-markdown-editor</h3>
-                </div>
-            </md-toolbar>
-            <yzz-menu></yzz-menu>
-        </md-sidenav>
-    
+        <yzz-menu ref="leftSidenav" class="md-left" id="closepage"></yzz-menu>
     </div>
 </template>
 
@@ -124,7 +115,7 @@
                 this.$store.dispatch('updateFont', this.font)
             },
             toggleLeftSidenav() {
-                this.$refs.leftSidenav.toggle();
+                this.$refs.leftSidenav.toggleLeftSidenav();
             },
             buttonFunction(content) {
                 let inputer = document.querySelector('#inputer')

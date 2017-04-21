@@ -1,5 +1,5 @@
 <template>
-  <div class="input-main" :style="{float:themeIuputFloat,margin:themeIuputMargin}" @keydown="keyListen">
+  <div class="input-main" :style="{float:themeIuputFloat,margin:themeIuputMargin}">
     <yzz-inputtoolbar ref="inputtoolbar" :class="{fontWhile:changeTheme}"></yzz-inputtoolbar>
     <textarea id="inputer" @input="inputting" @scroll="syncScroll" :value="rawTxt" :style="{fontFamily: updatedFont}" :class="{inputThemeBlack:changeTheme}"></textarea>
   </div>
@@ -22,51 +22,6 @@
         let outputer = document.getElementById('output')
         outputer.scrollTop = e.target.scrollTop
       },
-      keyListen(e) {
-        if (!e.ctrlKey && !e.altKey && !e.shiftKey) {
-          switch (e.keyCode) {
-            case 120:
-              {
-                e.preventDefault()
-                this.$refs.inputtoolbar.changeEditView()
-                break;
-              }
-            case 119:
-              {
-                e.preventDefault()
-                this.$refs.inputtoolbar.showSidenav()
-                break;
-              }
-            case 118:
-              {
-                e.preventDefault()
-                this.$refs.inputtoolbar.changeTheme()
-                break;
-              }
-          }
-  
-        } else if (e.ctrlKey && e.altKey && !e.shiftKey) {
-          // ctrl + alt
-          switch (e.keyCode) {
-            case 78:
-              {
-                e.preventDefault()
-                this.$store.dispatch('newArticle')
-                break;
-              }
-          }
-        } else if (e.ctrlKey && !e.altKey && !e.shiftKey) {
-          // ctrl +
-          switch (e.keyCode) {
-            case 66:
-              {
-                e.preventDefault()
-                eventBus.$emit('keydownButton')
-                break;
-              }
-          }
-        }
-      }
     },
     computed: {
       rawTxt() {

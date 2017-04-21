@@ -33,22 +33,22 @@
       keyListen(e) {
         if (!e.ctrlKey && !e.altKey && !e.shiftKey) {
           switch (e.keyCode) {
-            case 120:
+            case 118:
               {
                 e.preventDefault()
-                this.$refs.inputtoolbar.changeEditView()
+                this.$store.dispatch('changeTheme')
                 break;
               }
             case 119:
               {
                 e.preventDefault()
-                this.$refs.inputtoolbar.showSidenav()
+                this.$store.dispatch('showMenu')
                 break;
               }
-            case 118:
+            case 120:
               {
                 e.preventDefault()
-                this.$refs.inputtoolbar.changeTheme()
+                this.$store.dispatch('changeThemeFloat', 'edit-view')
                 break;
               }
           }
