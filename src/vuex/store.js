@@ -176,6 +176,7 @@ const actions = {
     commit
   }) {
     commit('NEW_ARTICLE')
+    commit('SAVE_CATCH')
   },
   deleteArticle({
     commit
