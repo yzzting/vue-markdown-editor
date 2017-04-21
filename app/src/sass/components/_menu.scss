@@ -1,3 +1,4 @@
+
 .menu-main {
   width: 100%;
   min-height: 40px;
@@ -10,8 +11,17 @@
     height: 60px;
     background-color: #fff;    
     color: #000;
-    span {
+    width: 100%;
+    .article-title {
         line-height: 60px;
+        width:80%;
+        cursor:pointer;
+        height: 60px;
+        padding: 0;
+    }
+    .md-icon-button {
+      top: 0;
+      padding: 0;
     }
   }
   .current {

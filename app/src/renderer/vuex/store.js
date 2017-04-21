@@ -27,7 +27,7 @@ const state = {
   showMenu: true,
   articleList: [{
     id: createID(),
-    content: 'Untitled\n---\n',
+    content: 'Untitled\n---\n content',
     current: true
   }],
   font: 'Monospace',
@@ -89,7 +89,7 @@ const mutations = {
 
     let newOne = {
       id: createID(),
-      content: 'Untitled\n---\n',
+      content: 'Untitled\n---\n content',
       current: true
     }
 
@@ -200,6 +200,7 @@ const actions = {
     commit
   }) {
     commit('NEW_ARTICLE')
+    commit('SAVE_CATCH')
   },
   deleteArticle({
     commit
