@@ -9,6 +9,7 @@
 
 <script>
   import yzzInputtoolbar from './input-toolbar'
+  import bus from '../common/eventsBus'
   import {
     codemirror,
     CodeMirror
@@ -51,13 +52,14 @@
     },
     data() {
       return {
+        keyMode: 'sublime',
         editorOption: {
           tabSize: 4,
           foldGutter: true,
           styleActiveLine: true,
           lineNumbers: true,
           line: true,
-          keyMap: this.$store.state.editorMode, 
+          keyMap: 'sublime',
           mode: 'text/x-markdown',
           theme: 'mdn-like',
           highlightSelectionMatches: {
@@ -77,9 +79,15 @@
         this.$store.dispatch('saveCatch')
       }
     },
+    mounted() {
+        bus.$on('keymapMode', (mode) => {
+          let self = this
+          self.editorOption.keyMap = mode
+        })
+    },
     computed: {
       editor() {
-        return this.$refs.editor.editor
+        this.$refs.editor.editor
       },
       rawTxt() {
         return this.$store.getters.articleRaw

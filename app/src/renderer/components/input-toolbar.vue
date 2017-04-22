@@ -42,6 +42,7 @@
 </template>
 
 <script>
+    import bus from '../common/eventsBus'
     export default {
         name: 'yzz-inputtoolbar',
         data: () => ({
@@ -55,7 +56,7 @@
                 this.$store.dispatch('showMenu')
             },
             changeEDitMode(mode) {
-                this.$store.dispatch('changeEditorMode', mode)
+                 bus.$emit('keymapMode',mode)
             },
             changeEditView(change) {
                 this.$store.dispatch('changeThemeFloat', 'edit-view')
