@@ -62,6 +62,8 @@
           keyMap: 'sublime',
           mode: 'text/x-markdown',
           theme: 'mdn-like',
+          scroll:this.syncScroll(),
+          // typewriterScrolling: true,
           highlightSelectionMatches: {
             showToken: /\w/,
             annotateScrollbar: true
@@ -71,8 +73,9 @@
     },
     methods: {
       syncScroll(e) {
-        let outputer = document.getElementById('output')
-        outputer.scrollTop = e.target.scrollTop
+        // let outputer = document.getElementById('output')
+        // outputer.scrollTop = e.target.scrollTop
+        console.log('outputer.scrollTop')
       },
       onEditorCursorActivity(editor) {
         this.$store.dispatch('textInput', editor)
@@ -80,10 +83,10 @@
       }
     },
     mounted() {
-        bus.$on('keymapMode', (mode) => {
-          let self = this
-          self.editorOption.keyMap = mode
-        })
+      bus.$on('keymapMode', (mode) => {
+        let self = this
+        self.editorOption.keyMap = mode
+      });
     },
     computed: {
       editor() {
