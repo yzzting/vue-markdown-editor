@@ -36,6 +36,8 @@ npm run build
 ## Plan
 
 - [ ] 开发单组件版本
+- [ ] 适配移动端
+- [ ] 重构
 
 ## Contribution
 
