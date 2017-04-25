@@ -21,6 +21,11 @@ npm run dev
 npm run build
 
 ```
+
+## Bug List
+
+- [ ] 快捷键选择文章时,必须先在menu选择一次文章,获取索引值
+
 ## Introduction
 
 [Live Demo](http://www.yzz1995.cn/vue-markdown-editor)
