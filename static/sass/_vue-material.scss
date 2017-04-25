@@ -1297,15 +1297,20 @@ button:focus {
 }
 
 .md-dialog-content {
+  font-size: 18px;
   padding: 0 24px 24px;
   -ms-flex: 1;
   flex: 1;
+  z-index: 9999;
   -ms-flex-preferred-size: auto;
   flex-basis: auto;
   overflow: auto;
   position: relative;
-  background: linear-gradient(180deg, #fff, #fff 1px, transparent 0), linear-gradient(0deg, #fff, #fff 3px, transparent 0), linear-gradient(180deg, rgba(0, 0, 0, .12), rgba(0, 0, 0, .12) 1px, transparent 0), linear-gradient(0deg, rgba(0, 0, 0, .2) 1px, rgba(0, 0, 0, .2) 2px, transparent 0);
-  background-attachment: local, local, scroll, scroll
+  background-attachment: local, local, scroll, scroll;
+  background-color: #fff;
+  span {
+    color:#e53935;
+  }
 }
 
 .md-dialog-content:first-child {

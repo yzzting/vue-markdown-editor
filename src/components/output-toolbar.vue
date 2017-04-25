@@ -14,9 +14,9 @@
                 </md-button>
             </li>
             <li class="toolbar-item">
-                <md-button class="md-icon-button md-raised md-dense">
+                <md-button class="md-icon-button md-raised md-dense" @click.native="openDialog('dialog3')">
                     <md-icon>help_outline</md-icon>
-                    <md-tooltip md-direction="bottom">Markdown语法帮助</md-tooltip>
+                    <md-tooltip md-direction="bottom">快捷键帮助</md-tooltip>
                 </md-button>
             </li>
             <li class="toolbar-item">
@@ -26,6 +26,9 @@
                 </md-button>
             </li>
         </ul>
+    
+        <md-dialog-alert :md-title="alert2.title" :md-content-html="alert2.contentHtml" ref="dialog3">
+        </md-dialog-alert>
     </div>
 </template>
 
@@ -37,7 +40,11 @@
         data() {
             return {
                 pageButton: 'fullscreen',
-                changeButton: 'keyboard_arrow_left'
+                changeButton: 'keyboard_arrow_left',
+                alert2: {
+                    title: '快捷键帮助',
+                    contentHtml: '<span>请将光标foucs在编辑区,快捷键才能生效</span> <br>' + '切换主题: F7 <br>' + '隐藏工具栏: F8 <br>' + ' 编辑模式: F9 <br>' + ' 阅读模式: F10 <br>' + '插入粗体: Ctrl+B <br>' + '插入斜体: Ctrl+I <br>' + '插入链接: Ctrl+L <br>' + '插入引用: Ctrl+Y <br>' + '插入斜体: Ctrl+I <br>' + '插入标题: Ctrl+H <br>' + '插入表格: Ctrl+[ <br>' + '插入下划线: Ctrl+U <br>' + '插入图片: Ctrl+Alt+I <br>' + '插入复选框: Ctrl+Alt+C <br>' + '新建文章: Ctrl+Alt+N <br>'
+                }
             }
         },
         methods: {
@@ -55,7 +62,13 @@
             },
             changeEditView(change) {
                 this.$store.dispatch('changeThemeFloat', 'read-view')
-            }
+            },
+            openDialog(ref) {
+                this.$refs[ref].open();
+            },
+            closeDialog(ref) {
+                this.$refs[ref].close();
+            },
         }
     }
 </script>

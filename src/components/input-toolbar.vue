@@ -30,7 +30,7 @@
     
         <md-dialog-alert :md-title="alert2.title" :md-content-html="alert2.contentHtml" ref="dialog4">
         </md-dialog-alert>
-    
+        
     </div>
 </template>
 

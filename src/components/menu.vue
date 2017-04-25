@@ -9,15 +9,15 @@
             <md-list-expand class="article-list">
                 <md-list>
                     <template v-for='i in articleList.length'>
-                        <md-list-item :class='{"current": articleList[i - 1].current}' class="article-list-item">
-                            <md-button class="article-title" @click.native="seleteArticle(i)">
-                                {{ articleList[i - 1].content.split('\n')[0] }}
-                            </md-button>
-                            <md-button v-if="articleList.length > 1" @click.native="deleteArticle(i)" class="md-icon-button">
-                                <md-icon>delete</md-icon>
-                            </md-button>
-                        </md-list-item>
-                    </template>
+                            <md-list-item :class='{"current": articleList[i - 1].current}' class="article-list-item">
+                                <md-button class="article-title" @click.native="seleteArticle(i)">
+                                    {{ articleList[i - 1].content.split('\n')[0] }}
+                                </md-button>
+                                <md-button v-if="articleList.length > 1" @click.native="deleteArticle(i)" class="md-icon-button">
+                                    <md-icon>delete</md-icon>
+                                </md-button>
+                            </md-list-item>
+</template>
                 </md-list>
             </md-list-expand>
         </div>

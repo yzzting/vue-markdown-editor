@@ -117,6 +117,9 @@
             toggleLeftSidenav() {
                 this.$refs.leftSidenav.toggleLeftSidenav();
             },
+            selectArticle(i) {
+                this.$refs.leftSidenav.seleteArticle(i)
+            },
             buttonFunction(content) {
                 let inputer = document.querySelector('#inputer')
                 let startPosition = inputer.selectionStart

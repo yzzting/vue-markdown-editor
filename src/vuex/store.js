@@ -36,7 +36,8 @@ const state = {
   themeOutputFloat: 'right',
   themeMargin: '',
   themeEditView: true,
-  themeReadView: true
+  themeReadView: true,
+  articlePos: Number
 }
 
 const saveID = (state) => {
@@ -71,6 +72,9 @@ const mutations = {
   },
   UPDATE_FONT(state, font) {
     state.font = font
+  },
+  ARTICLE_POS(state,pos){
+    state.articlePos = pos
   },
   NEW_ARTICLE(state) {
     for (let i = 0, len = state.articleList.length; i < len; i++) {
@@ -129,6 +133,11 @@ const mutations = {
     }
     state.articleList[index].current = true
   },
+  articlePos(state) {
+    for (let i = 0, len = state.articleList.length; i < len; i++) {
+      state.articleList[i].current = false
+    }
+  },
   ARTICLE_LIST_FROM_LOCAL(state) {
     //从localStorage中取出数据,存进前面定义好的articleList数组中
     if (localStorage.getItem('idArr')) {
@@ -172,6 +181,11 @@ const actions = {
   }, font) {
     commit('UPDATE_FONT', font)
   },
+  articlePos({
+    commit
+  },pos) {
+    commit('ARTICLE_POS',pos)
+  },
   newArticle({
     commit
   }) {
@@ -202,6 +216,7 @@ const actions = {
     commit
   }, index) {
     commit('SELECT_ARTICLE', index)
+    commit('ARTICLE_POS',index)
   },
   articleListFromLocal({
     commit

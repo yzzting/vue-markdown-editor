@@ -18,6 +18,12 @@
     mounted() {
       this.$store.dispatch('articleListFromLocal')
     },
+    data() {
+      return {
+        p: 1,
+        n: 1
+      }
+    },
     computed: {
       showMenu() {
         return !this.$store.state.showMenu
@@ -27,11 +33,15 @@
       },
       themeReadView() {
         return this.$store.state.themeReadView
+      },
+      articleList() {
+        return this.$store.getters.articleList
       }
     },
     methods: {
-      keyListen(e) {
+      keyListen(e, i) {
         if (!e.ctrlKey && !e.altKey && !e.shiftKey) {
+          //F
           switch (e.keyCode) {
             case 118:
               {
@@ -56,11 +66,10 @@
         } else if (e.ctrlKey && e.altKey && !e.shiftKey) {
           // ctrl + alt
           switch (e.keyCode) {
-            case 78:
+            case 67:
               {
                 e.preventDefault()
-                this.$store.dispatch('newArticle')
-                break;
+                this.$refs.sidenav.buttonFunction("`code`")
               }
             case 73:
               {
@@ -68,10 +77,36 @@
                 this.$refs.sidenav.buttonFunction("![](http://)")
                 break;
               }
-            case 67:
+            case 74:
               {
                 e.preventDefault()
                 this.$refs.sidenav.buttonFunction("\n- [ ] ")
+                break;
+              }
+            case 78:
+              {
+                e.preventDefault()
+                this.$store.dispatch('newArticle')
+                break;
+              }
+            case 188:
+              {
+                e.preventDefault()
+                console.log(this.$store.state.articlePos)
+                this.$store.dispatch('selectArticle', this.$store.state.articlePos - 1)
+                break;
+              }
+            case 190:
+              {
+                e.preventDefault()
+                console.log(this.$store.state.articlePos)
+                this.$store.dispatch('selectArticle', this.$store.state.articlePos + 1)
+                break;
+              }
+            case 220:
+              {
+                e.preventDefault()
+                this.$refs.sidenav.toggleLeftSidenav()
                 break;
               }
           }
@@ -82,6 +117,12 @@
               {
                 e.preventDefault()
                 this.$refs.sidenav.buttonFunction("**Bold**")
+                break;
+              }
+            case 72:
+              {
+                e.preventDefault()
+                this.$refs.sidenav.buttonFunction("\n# ")
                 break;
               }
             case 73:
@@ -96,34 +137,22 @@
                 this.$refs.sidenav.buttonFunction("[Link](http://)")
                 break;
               }
+            case 85:
+              {
+                e.preventDefault()
+                this.$refs.sidenav.buttonFunction("\n\n---\n\n")
+                break;
+              }
             case 89:
               {
                 e.preventDefault()
                 this.$refs.sidenav.buttonFunction("\n> ")
                 break;
               }
-            case 77:
-              {
-                e.preventDefault()
-                this.$refs.sidenav.buttonFunction("`code`")
-                break;
-              }
-            case 72:
-              {
-                e.preventDefault()
-                this.$refs.sidenav.buttonFunction("\n# ")
-                break;
-              }
             case 219:
               {
                 e.preventDefault()
                 this.$refs.sidenav.buttonFunction("\n\n| title | title | title |\n| --- | --- | --- |\n| item | item | item |")
-                break;
-              }
-            case 221:
-              {
-                e.preventDefault()
-                this.$refs.sidenav.buttonFunction("\n\n---\n\n")
                 break;
               }
           }
