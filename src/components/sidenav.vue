@@ -97,7 +97,10 @@
 <script>
     import Utils from '../common/utils'
     import yzzMenu from './menu'
-    
+    import {
+        mapGetters,
+        mapState
+    } from 'vuex'
     export default {
         name: 'sidenav',
         data() {
@@ -199,15 +202,15 @@
             }
         },
         computed: {
-            showMenu() {
-                return this.$store.state.showMenu
-            },
             titleHtml() {
                 return this.$store.getters.articleRaw.split('\n')[0] + '.html'
             },
             titleMd() {
                 return this.$store.getters.articleRaw.split('\n')[0] + '.md'
-            }
+            },
+            ...mapState({
+                showMenu: state => state.showMenu,
+            }),
         }
     }
 </script>

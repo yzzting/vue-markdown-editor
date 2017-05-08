@@ -8,6 +8,8 @@
 
 <script>
     import yzzOutputtoolbar from './output-toolbar'
+    import { mapGetters,mapState } from 'vuex'
+
     
     export default {
         name: 'outputer',
@@ -15,21 +17,15 @@
             yzzOutputtoolbar
         },
         computed: {
-            ripeTxt() {
-                return this.$store.getters.articleMd
-            },
-            changeTheme() {
-                return !this.$store.state.theme
-            },
-            themeOutputFloat() {
-                return this.$store.state.themeOutputFloat
-            },
-            themeMargin() {
-                return this.$store.state.themeMargin
-            },
-            updatedFont() {
-                return this.$store.getters.articleFont
-            },
+            ...mapGetters({
+                ripeTxt: 'articleMd',
+                updatedFont: 'articleFont'
+            }),
+            ...mapState({
+                changeTheme: state => !state.theme,
+                themeOutputFloat: state => state.themeOutputFloat,
+                themeMargin: state => state.themeMargin
+            })
         }
     }
 </script>

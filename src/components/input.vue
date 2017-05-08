@@ -7,7 +7,10 @@
 
 <script>
   import yzzInputtoolbar from './input-toolbar'
-  
+  import {
+    mapState,
+    mapGetters
+  } from 'vuex'
   export default {
     name: 'input',
     components: {
@@ -24,21 +27,15 @@
       },
     },
     computed: {
-      rawTxt() {
-        return this.$store.getters.articleRaw
-      },
-      updatedFont() {
-        return this.$store.getters.articleFont
-      },
-      changeTheme() {
-        return !this.$store.state.theme
-      },
-      themeIuputFloat() {
-        return this.$store.state.themeIuputFloat
-      },
-      themeIuputMargin() {
-        return this.$store.state.themeMargin
-      }
+      ...mapState({
+        changeTheme: state => !state.theme,
+        themeIuputFloat: state => state.themeIuputFloat,
+        themeIuputMargin: state => state.themeIuputMargin
+      }),
+      ...mapGetters({
+        rawTxt: 'articleRaw',
+        updatedFont: 'articleFont'
+      })
     }
   }
 </script>
