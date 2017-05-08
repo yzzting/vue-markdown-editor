@@ -13,30 +13,24 @@
   import inputer from './components/input.vue';
   import outputer from './components/output.vue';
   import yzzMenu from './components/menu.vue';
+  import {
+    mapState,
+    mapGetters
+  } from 'vuex'
   export default {
     name: 'app',
     mounted() {
       this.$store.dispatch('articleListFromLocal')
     },
-    data() {
-      return {
-        p: 1,
-        n: 1
-      }
-    },
     computed: {
-      showMenu() {
-        return !this.$store.state.showMenu
-      },
-      themeEditView() {
-        return this.$store.state.themeEditView
-      },
-      themeReadView() {
-        return this.$store.state.themeReadView
-      },
-      articleList() {
-        return this.$store.getters.articleList
-      }
+      ...mapState({
+        showMenu: state => state.showMenu,
+        themeEditView: state => state.themeEditView,
+        themeReadView: state => state.themeReadView
+      }),
+      ...mapGetters({
+        articleList: 'articleList'
+      })
     },
     methods: {
       keyListen(e, i) {

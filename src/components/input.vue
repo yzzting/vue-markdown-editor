@@ -30,7 +30,7 @@
       ...mapState({
         changeTheme: state => !state.theme,
         themeIuputFloat: state => state.themeIuputFloat,
-        themeIuputMargin: state => state.themeIuputMargin
+        themeIuputMargin: state => state.themeMargin
       }),
       ...mapGetters({
         rawTxt: 'articleRaw',
